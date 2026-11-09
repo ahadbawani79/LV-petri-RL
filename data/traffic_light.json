@@ -1,0 +1,84 @@
+{
+    "model": {
+        "name": "Traffic Light",
+        "type": "SPN"
+    },
+    "places": [
+        {
+            "id": "p1",
+            "name": "Red",
+            "variable_name": "red",
+            "initial_marking": 1
+        },
+        {
+            "id": "p2",
+            "name": "Green",
+            "variable_name": "green",
+            "initial_marking": 0
+        },
+        {
+            "id": "p3",
+            "name": "Yellow",
+            "variable_name": "yellow",
+            "initial_marking": 0
+        }
+    ],
+    "transitions": [
+        {
+            "id": "t1",
+            "name": "Red to Green",
+            "rate": "1.0",
+            "guard": "True"
+        },
+        {
+            "id": "t2",
+            "name": "Green to Yellow",
+            "rate": "1.0",
+            "guard": "True"
+        },
+        {
+            "id": "t3",
+            "name": "Yellow to Red",
+            "rate": "1.0",
+            "guard": "True"
+        }
+    ],
+    "arcs": [
+        {
+            "source": "p1",
+            "target": "t1",
+            "weight": 1,
+            "type": "normal"
+        },
+        {
+            "source": "t1",
+            "target": "p2",
+            "weight": 1,
+            "type": "normal"
+        },
+        {
+            "source": "p2",
+            "target": "t2",
+            "weight": 1,
+            "type": "normal"
+        },
+        {
+            "source": "t2",
+            "target": "p3",
+            "weight": 1,
+            "type": "normal"
+        },
+        {
+            "source": "p3",
+            "target": "t3",
+            "weight": 1,
+            "type": "normal"
+        },
+        {
+            "source": "t3",
+            "target": "p1",
+            "weight": 1,
+            "type": "normal"
+        }
+    ]
+}

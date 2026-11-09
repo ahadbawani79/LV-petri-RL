@@ -1,0 +1,78 @@
+{
+    "model": {
+        "name": "Predator Prey Model",
+        "type": "SPN"
+    },
+    "places": [
+        {
+            "id": "p1",
+            "name": "Prey",
+            "variable_name": "prey",
+            "initial_marking": 150
+        },
+        {
+            "id": "p2",
+            "name": "Predators",
+            "variable_name": "predators",
+            "initial_marking": 50
+        }
+    ],
+    "transitions": [
+        {
+            "id": "t1",
+            "name": "Prey Reproduction",
+            "rate": "0.5 * prey",
+            "guard": "True"
+        },
+        {
+            "id": "t2",
+            "name": "Predator Hunting",
+            "rate": "0.002 * predators * prey",
+            "guard": "prey > 10 and predators > 0"
+        },
+        {
+            "id": "t3",
+            "name": "Predator Death",
+            "rate": "0.3 * predators",
+            "guard": "True"
+        }
+    ],
+    "arcs": [
+        {
+            "source": "p1",
+            "target": "t1",
+            "weight": 1,
+            "type": "normal"
+        },
+        {
+            "source": "t1",
+            "target": "p1",
+            "weight": 2,
+            "type": "normal"
+        },
+        {
+            "source": "p1",
+            "target": "t2",
+            "weight": 1,
+            "type": "normal"
+        },
+        {
+            "source": "p2",
+            "target": "t2",
+            "weight": 1,
+            "type": "normal"
+        },
+        {
+            "source": "t2",
+            "target": "p2",
+            "weight": 2,
+            "type": "normal"
+        },
+        {
+            "source": "p2",
+            "target": "t3",
+            "weight": 1,
+            "type": "normal"
+        }
+    ]
+}

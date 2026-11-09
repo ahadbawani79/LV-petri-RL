@@ -1,0 +1,78 @@
+{
+    "model": {
+        "name": "Espresso Machine",
+        "type": "SPN"
+    },
+    "places": [
+        {
+            "id": "p1",
+            "name": "Coffee Beans",
+            "variable_name": "coffee_beans",
+            "initial_marking": 100
+        },
+        {
+            "id": "p2",
+            "name": "Milk",
+            "variable_name": "milk",
+            "initial_marking": 100
+        },
+        {
+            "id": "p3",
+            "name": "Espresso",
+            "variable_name": "espresso",
+            "initial_marking": 0
+        },
+        {
+            "id": "p4",
+            "name": "Cappuccino",
+            "variable_name": "cappuccino",
+            "initial_marking": 0
+        }
+    ],
+    "transitions": [
+        {
+            "id": "t1",
+            "name": "Make Espresso",
+            "rate": "0.5 * coffee_beans",
+            "guard": "True"
+        },
+        {
+            "id": "t2",
+            "name": "Make Cappuccino",
+            "rate": "0.003 * coffee_beans * milk",
+            "guard": "True"
+        }
+    ],
+    "arcs": [
+        {
+            "source": "p1",
+            "target": "t1",
+            "weight": 1,
+            "type": "normal"
+        },
+        {
+            "source": "t1",
+            "target": "p3",
+            "weight": 1,
+            "type": "normal"
+        },
+        {
+            "source": "p1",
+            "target": "t2",
+            "weight": 1,
+            "type": "normal"
+        },
+        {
+            "source": "p2",
+            "target": "t2",
+            "weight": 1,
+            "type": "normal"
+        },
+        {
+            "source": "t2",
+            "target": "p4",
+            "weight": 1,
+            "type": "normal"
+        }
+    ]
+}
